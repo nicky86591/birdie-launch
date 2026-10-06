@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>弹弓小鸟 · 草地大作战</title>
+  <meta name="description" content="拉动弹弓，发射小鸟，击倒木架与绿色目标。三个关卡，支持鼠标、触屏与键盘，无声音。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f05242'/%3E%3Cpath d='M18 15l11 5-11 4' fill='%23ffc64d'/%3E%3Ccircle cx='18' cy='12' r='3' fill='white'/%3E%3Ccircle cx='19' cy='12' r='1'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="matter.min.js"></script><script defer src="game.js"></script>
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="弹弓小鸟首页"><span class="brand-mark">✦</span><span>弹弓小鸟<small>BIRDIE LAUNCH</small></span></a>
+    <div class="chapter"><span class="chapter-line"></span>草地大作战<span class="edition">01 — 03</span></div>
+    <button class="icon-button" id="help" aria-label="操作说明" title="操作说明">?</button>
+  </header>
+  <section class="play-section" aria-label="游戏">
+    <div class="game-heading"><div><span class="eyebrow">拉满弹弓，快乐出击</span><h1>小鸟出发！</h1></div><div class="level-picker" aria-label="选择关卡"><button data-level="0" class="selected" aria-label="第 1 关">01</button><button data-level="1" aria-label="第 2 关">02</button><button data-level="2" aria-label="第 3 关">03</button></div></div>
+    <div class="arena" id="arena">
+      <canvas id="game" width="1280" height="680" tabindex="0" aria-label="弹弓游戏。拖动左侧红色小鸟后松开发射，或使用方向键瞄准、空格发射。"></canvas>
+      <div class="hud"><div class="level-badge"><span class="flag">⚑</span><div><small>当前关卡</small><strong id="level-label">01 / 03</strong></div></div><div class="score-badge"><small>得分</small><strong id="score">0</strong></div><button class="pause-button" id="pause" aria-label="暂停游戏" title="暂停游戏">Ⅱ</button></div>
+      <div id="aim-tip" class="aim-tip">拖住小鸟，向后拉！<span>松手即可发射</span></div>
+      <div class="arena-bottom"><span id="birds" class="birds" aria-label="剩余小鸟"></span><span class="target-count">剩余目标 <strong id="targets">2</strong></span></div>
+      <div class="overlay" id="overlay" hidden><div class="result-card"><div class="result-symbol" id="result-symbol">✦</div><p id="result-kicker">关卡完成</p><h2 id="result-title">漂亮的一击！</h2><p id="result-detail"></p><button class="primary" id="result-action">下一关</button><button class="text-button" id="result-retry">再玩一次</button></div></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <div class="control-bar"><div class="instruction"><span class="mouse-symbol">↙</span><p><strong>向后拖拽 · 松开发射</strong><span>击倒所有绿色目标，就能过关。</span></p></div><button id="restart" class="restart"><span>↻</span>重新开始</button></div>
+  </section>
+  <footer><span>方向键瞄准 <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> <span class="divider">/</span> <kbd>空格</kbd> 发射 <span class="divider">/</span> <kbd>R</kbd> 重开</span><span class="silent">无声模式 · 专心玩耍</span></footer>
+</main>
+<dialog id="help-dialog"><button id="close-help" class="close-help" aria-label="关闭说明">×</button><span class="eyebrow">玩法很简单</span><h2>瞄准，拉开，发射。</h2><p>拖动弹弓上的红色小鸟向后拉，白色圆点会提示飞行方向。松开后小鸟飞出，击倒木架和绿色目标。</p><p>每关有 3 只小鸟。消灭所有绿色目标即可通关，剩下的小鸟会变成额外奖励。</p><p>键盘：方向键调整拉伸方向，空格或回车发射，Esc 取消瞄准，R 重新开始。手机横屏玩更舒适。</p><button class="primary" id="got-it">开始玩</button></dialog>
+</body>
+</html>
